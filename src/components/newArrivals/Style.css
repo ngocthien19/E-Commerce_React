@@ -1,0 +1,72 @@
+.topArrival .heading-left i {
+    font-size: 30px;
+    color: #e94560;
+    margin-right: 10px;
+}
+
+.topArrival .heading {
+    margin-bottom: 20px;
+}
+
+.topArrival .heading-left h2 {
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.topArrival .heading-right {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 20px;
+    color: #a2a1a1;
+}
+
+.topArrival .heading-right span {
+    margin-right: 10px;
+}
+
+.topArrival .d_flex {
+    align-items: center;
+}
+
+.topArrival .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgb(3 0 71 / 9%);
+}
+
+.topArrival .box {
+    margin: 0 25px;
+    cursor: pointer;
+    transition: all 0.25s linear;
+}
+
+.topArrival .box:hover {
+    transform: scale(1.05);
+}
+
+.topArrival .box .icon {
+    width: 180px;
+    height: 180px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.topArrival .box h4 {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    display: -webkit-box; 
+    -webkit-line-clamp: 1; 
+    -webkit-box-orient: vertical; 
+    overflow: hidden;
+}
+
+.topArrival .box p {
+    font-size: 16px;
+    font-weight: bold;
+    color: #e94560;
+}

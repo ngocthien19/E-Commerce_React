@@ -1,0 +1,68 @@
+.topDiscount .heading-left i {
+    font-size: 30px;
+    color: #e94560;
+    margin-right: 10px;
+}
+
+.topDiscount .heading {
+    margin-bottom: 20px;
+}
+
+.topDiscount .heading-left h2 {
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.topDiscount .heading-right {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 20px;
+    color: #a2a1a1;
+}
+
+.topDiscount .heading-right span {
+    margin-right: 10px;
+}
+
+.topDiscount .d_flex {
+    align-items: center;
+}
+
+.topDiscount .box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.topDiscount .box h4 {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    transition: all 0.25s linear;
+    display: -webkit-box; 
+    -webkit-line-clamp: 1; 
+    -webkit-box-orient: vertical; 
+    overflow: hidden;
+}
+
+.topDiscount .box p {
+    font-size: 16px;
+    font-weight: bold;
+    color: #e94560;
+    transition: all 0.25s linear;
+}
+
+.topDiscount .product {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgb(3 0 71 / 9%);
+    cursor: pointer;
+    margin: 0 10px;
+    transition: all 0.25s linear;
+}
+
+.topDiscount .product:hover h4,
+.topDiscount .product:hover p  {
+    padding-left: 20px;
+}

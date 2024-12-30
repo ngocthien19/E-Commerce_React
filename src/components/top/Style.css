@@ -1,0 +1,74 @@
+.topCat {
+    position: relative;
+}
+
+.topCat .heading-left i {
+    font-size: 30px;
+    color: #e94560;
+    margin-right: 10px;
+}
+
+.topCat .heading {
+    margin-bottom: 20px;
+}
+
+.topCat .heading-left h2 {
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.topCat .heading-right {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 20px;
+    color: #a2a1a1;
+}
+
+.topCat .heading-right span {
+    margin-right: 10px;
+}
+
+.topCat .d_flex {
+    align-items: center;
+}
+
+.topCat .box img {
+    width: 100%;
+    height: 100%;
+}
+
+.topCat .nameTop {
+    position: relative;
+    width: 100%;
+}
+
+.topCat .nameTop span {
+    background-color: #0f3460;
+    color: #fff;
+    font-size: 13px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    margin: 5px;
+    position: absolute;
+    top: 10px;
+}
+
+.topCat .nameTop .t-left {
+    left: 0;
+}
+
+.topCat .nameTop .t-right {
+    background-color: aliceblue;
+    color: #000;
+    right: 0;
+}
+
+.topCat .product {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgb(3 0 71 / 9%);
+    cursor: pointer;
+    transition: all 0.25s linear;
+    margin: 0 10px;
+}

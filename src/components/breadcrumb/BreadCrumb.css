@@ -1,0 +1,21 @@
+.breadcrumb {
+    padding: 50px 0 30px 0;
+}
+
+.breadcrumb img {
+    margin: 0 10px;
+}
+
+.breadcrumb a span:nth-of-type(1),
+.breadcrumb a span:nth-of-type(2) {
+    color: rgb(129, 129, 250);
+    cursor: pointer;
+    text-transform: capitalize;
+}
+
+.breadcrumb a span:nth-of-type(1),
+.breadcrumb a span:nth-of-type(2) {
+    &:hover {
+        text-decoration: underline;
+    }
+}

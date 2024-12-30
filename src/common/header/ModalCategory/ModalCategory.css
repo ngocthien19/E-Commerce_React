@@ -1,0 +1,40 @@
+.modal-category {
+    position: absolute;
+    max-height: 90vh;
+    height: auto;
+    top: 190px;
+    left: 72px;
+    width: 20%;
+    padding: 20px;
+    box-shadow: var(--boxShadow);
+    border-radius: 20px;
+    z-index: 10;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.modal-category.hide {
+    display: none;
+}
+
+.modal-item {
+    text-transform: capitalize;
+    border-radius: 20px;
+    border: 1px solid #f6f9fc;
+    background-color: #f6f9fc;
+    padding: 0 10px;
+    height: 50px;
+    line-height: 50px;
+    margin-bottom: 10px;
+    transition: all 0.25s linear;
+}
+
+.modal-item:hover {
+    background: #fff;
+    box-shadow: var(--boxShadow);
+}
+
+.modal-item i {
+    width: 20px;
+    margin-right: 10px;
+}

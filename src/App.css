@@ -1,0 +1,145 @@
+:root {
+  --boxShadow: rgb(43 52 69 / 10%) 0 4px 16px;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fff;
+  font-family: "Poppins", sans-serif;
+}
+
+.background {
+  background-color: #f6f9fc;
+  padding: 50px 0;
+}
+
+.container {
+  max-width: 90%;
+  margin: auto;
+}
+
+.d_flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.c_flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.f_flex {
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+li {
+  list-style: none;
+}
+
+.RText {
+  text-align: right;
+}
+
+input {
+  outline: none;
+  border: none;
+  background-color: none;
+}
+
+.row {
+  width: 50%;
+}
+
+.icon-circle {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 50%;
+  background-color: #f3f5f9;
+  margin-left: 20px;
+  text-align: center;
+  transition: all 0.25s linear;
+  cursor: pointer;
+}
+
+.icon-circle:hover {
+  background-color: #e0e6f5;
+}
+
+/* ---------Category------ */
+
+.contentWidth {
+  width: 77%;
+}
+
+.category {
+  width: 23%;
+  box-shadow: var(--boxShadow);
+  height: 510px;
+  padding: 20px 0;
+  border-radius: 10px;
+  margin-top: 5px;
+}
+
+.category img {
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+  object-fit: cover;
+}
+
+.category span {
+  margin: 11px 20px;
+}
+
+.category .f_flex {
+  align-items: center;
+}
+
+.category .box {
+  padding: 1px 20px;
+  transition: all 0.5s linear;
+}
+
+.category .box:hover {
+  background-color: #ffe1ef;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #fff;
+  padding: 13px 40px;
+  font-weight: bold;
+  color: #e94560;
+  border-radius: 10px;
+  border: 1px solid #e94560;
+  cursor: pointer;
+  transition: all 0.25s linear;
+}
+
+.btn-primary:hover {
+  background-color: #e94560;
+  color: #fff;
+}
+
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.grid4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+}

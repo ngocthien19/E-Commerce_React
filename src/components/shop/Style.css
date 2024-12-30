@@ -1,0 +1,233 @@
+.shop .flex {
+    display: flex;
+    justify-content: center;
+}
+
+.shop .category {
+    padding: 25px;
+    height: 90vh;
+    background-color: #fff;
+    margin-right: 40px;
+}
+
+.shop .brand {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.shop .brand h1:nth-of-type(1) {
+    padding-right: 50px;
+    border-right: 3px solid rgb(216, 216, 216);
+}
+
+.shop .brand h1:nth-of-type(2) {
+    color: gray;
+}
+
+.shop .box1 {
+    background-color: #f6f9fc;
+    border: 1px solid #f6f9fc;
+    border-radius: 10px;
+    margin: 15px 0;
+    padding: 5px 10px;
+    transition: all 0.25s linear;
+    cursor: pointer;
+}
+
+.shop .box1:hover {
+    background: #fff;
+    box-shadow: var(--boxShadow);
+}
+
+.shop .box1 img {
+    width: 20px;
+    height: 20px;
+}
+
+.shop .mb100 {
+    margin-bottom: 100px;
+}
+
+.shop .category .btn-action {
+    width: 100%;
+    font-size: 16px;
+    background-color: #f6f9fc;
+    border: 1px solid #f6f9fc;
+    border-radius: 10px;
+    margin: 15px 0;
+    padding: 15px 20px;
+    transition: all 0.25s linear;
+    cursor: pointer;
+}
+
+.shop .category .btn-action:hover {
+    background: #fff;
+    box-shadow: var(--boxShadow);
+}
+
+.shop .heading {
+    margin-top: 20px;
+}
+
+.shop .heading-left h2 {
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.shop .heading-right span {
+    margin-right: 10px;
+}
+
+.shop .d_flex {
+    align-items: center;
+}
+
+.shop .heading i{
+    color: #e94560;
+    margin: 10px;
+}
+
+.shop .heading-right, .shop .heading-right .icon {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 20px;
+    color: #a2a1a1;
+    margin: 0;
+}
+
+.shop .f_flex {
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.shop .product {
+    background-color: #fff;
+    padding: 20px;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: var(--boxShadow);
+    margin: 10px;
+    cursor: pointer;
+}
+
+.shop .product:hover .product-like{
+    opacity: 1;
+}
+
+.shop .product img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.shop .product h3 {
+    font-weight: 400;
+    font-size: 17px;
+    display: -webkit-box; 
+    -webkit-line-clamp: 1; 
+    -webkit-box-orient: vertical; 
+    overflow: hidden;
+}
+
+.shop .product .rate i {
+    font-size: 15px;
+    color: #ffcd4e;
+    margin: 5px 5px 5px 0;
+}
+
+.shop .product .price {
+    display: flex;
+    justify-content: space-between;
+    color: #e94560;
+    margin-top: 10px;
+}
+
+.shop .product .price button {
+    background: none;
+    color: #e94560;
+    font-size: 20px;
+    border: 1px solid #e94560;
+    padding: 4px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.25s linear;
+}
+
+.shop .product .price button:hover {
+    background-color: #e94560;
+    color: #fff;
+}
+
+.shop .product-like {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    opacity: 0;
+    transition: all 0.5s linear;
+}
+
+.shop .product-like label {
+    background-color: #0f3460;
+    padding: 1px 10px;
+    font-size: 12px;
+    color: #fff;
+    border-radius: 999px;
+    margin-bottom: 8px;
+    display: inline-block;
+}
+
+.shop .product-like i {
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.25s linear;
+}
+
+.shop .product-like i:hover {
+    color: #e94560;
+}
+
+.shop .product .discount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    background-color: #e94560;
+    color: #fff;
+    border-radius: 10px 0 0 0;
+}
+
+.shop .percent {
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.shop .off {
+    font-weight: 600;
+}
+
+.shop .product .discount::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    right: 0;
+    border-width: 0 25px 5px;
+    border-style: solid;
+    color: #e94560;
+    border-color: #e94560 currentColor transparent currentColor;
+}
+
+.shop .p-price .sale {
+    color: #ccc;
+    text-decoration: line-through;
+    margin-top: 5px;
+}

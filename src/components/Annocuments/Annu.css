@@ -1,0 +1,23 @@
+.anno .box {
+    background-color: #fff;
+    box-shadow: var(--boxShadow);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.anno .img1 {
+    width: 30%;
+    height: 340px;
+}
+
+.anno .img2 {
+    width: 68%;
+    height: 340px;
+}
+
+.anno img {
+    border-radius: 20px;
+}
