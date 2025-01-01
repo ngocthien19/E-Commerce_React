@@ -3,13 +3,17 @@ import logo from '../../assets/logo.svg'
 import { Link } from "react-router-dom"
 import { ShopContext } from "../context/ShopContext"
 
-const Search = ({ cartItem }) => {
+const Search = ({ cartItem, setActiveMenu }) => {
     window.addEventListener("scroll", function() {
         const search = this.document.querySelector('.search')
         search.classList.toggle("active", window.scrollY > 100)
     })
 
     const { scrollToTop } = useContext(ShopContext)
+    const handleScrollAndActiveMenu = () => {
+        setActiveMenu("home")
+        scrollToTop()
+    }
 
     const getTotalQty = () => {
         return cartItem.reduce((total, item) => total + item.qty, 0);
@@ -19,7 +23,7 @@ const Search = ({ cartItem }) => {
         <section className="search">
             <div className="container c_flex">
                 <div className="logo width">
-                    <Link to="/" onClick={scrollToTop}>
+                    <Link to="/" onClick={handleScrollAndActiveMenu}>
                         <img src={logo} alt="" />
                     </Link>
                 </div>
@@ -32,7 +36,7 @@ const Search = ({ cartItem }) => {
                 <div className="icon f_flex width">
                     <i className="fa fa-user icon-circle"></i>
                     <div className="cart">
-                        <Link to="/cart">
+                        <Link to="/cart" onClick={scrollToTop}>
                             <i className="fa fa-shopping-bag icon-circle"></i>
                             <span>{getTotalQty() > 0 ? getTotalQty() : ""}</span>
                         </Link>

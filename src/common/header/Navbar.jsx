@@ -2,10 +2,10 @@ import React, { useState } from "react"
 import { Link } from 'react-router-dom'
 import ModalCategory from "./ModalCategory/ModalCategory"
 
-const Navbar = () => {
+const Navbar = ({ activeMenu, setActiveMenu }) => {
 
     const [mobileMenu, setMobileMenu] = useState(false)
-    const [activeMenu, setActiveMenu] = useState("home")
+    
 
     const [showCategory, setShowCategory] = useState(false)
 
@@ -24,18 +24,31 @@ const Navbar = () => {
 
                     <div className="nav_link">
                         <ul className={mobileMenu ? "nav-link-mobileMenu" : "link f_flex"} onClick={() => setMobileMenu(false)}>
-                            <li onClick={() => setActiveMenu("home")} className="nav_link_item">
-                                <Link to="/">Home {activeMenu === "home" ? <hr /> : <></>}</Link>
-                            </li>
-                            <li onClick={() => setActiveMenu("user")} className="nav_link_item">
-                                <Link to="/user">User account {activeMenu === "user" ? <hr /> : <></>}</Link>
-                            </li>
-                            <li onClick={() => setActiveMenu("order")} className="nav_link_item">
-                                <Link to="/order">Track my order {activeMenu === "order" ? <hr /> : <></>}</Link>
-                            </li>
-                            <li onClick={() => setActiveMenu("contact")} className="nav_link_item">
-                                <Link to="/contact">Contact {activeMenu === "contact" ? <hr /> : <></>}</Link>
-                            </li>
+                            <Link to="/">
+                                <li onClick={() => setActiveMenu("home")} className="nav_link_item">
+                                    Home {activeMenu === "home" ? <hr /> : <></>}
+                                </li>
+                            </Link>
+                            <Link to="/menu">
+                                <li onClick={() => setActiveMenu("menu")} className="nav_link_item">
+                                    All Product {activeMenu === "menu" ? <hr /> : <></>}
+                                </li>
+                            </Link>
+                            <Link to="/user">
+                                <li onClick={() => setActiveMenu("user")} className="nav_link_item">
+                                    User account {activeMenu === "user" ? <hr /> : <></>}
+                                </li>
+                            </Link>
+                            <Link to="/track-order">
+                                <li onClick={() => setActiveMenu("track-order")} className="nav_link_item">
+                                    Track my order {activeMenu === "track-order" ? <hr /> : <></>}
+                                </li>
+                            </Link>
+                            <Link to="/contact">
+                                <li onClick={() => setActiveMenu("contact")} className="nav_link_item">
+                                    Contact {activeMenu === "contact" ? <hr /> : <></>}
+                                </li>
+                            </Link>
                         </ul>
 
                         <button className="toggle" onClick={() => setMobileMenu(!mobileMenu)}>

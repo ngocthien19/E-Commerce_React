@@ -1,5 +1,6 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import './Style.css'
+import { ShopContext } from "../../common/context/ShopContext"
 
 const ShopCart = ({ shopItems, handleAddToCart }) => {
     const [items, setItems] = useState(shopItems)
@@ -14,6 +15,8 @@ const ShopCart = ({ shopItems, handleAddToCart }) => {
         })
         setItems(newItem)
     }
+
+    const { toVND } = useContext(ShopContext)
     return(
         <>
             {items.map((product) => {
@@ -46,8 +49,8 @@ const ShopCart = ({ shopItems, handleAddToCart }) => {
                                 </div>
                                 <div className="price">
                                     <div className="p-price">
-                                        <h4>{product.price}.00</h4>
-                                        <h4 className="sale">{product.sale}.00</h4>
+                                        <h4>₫{toVND(product.price)}</h4>
+                                        <h4 className="sale">₫{toVND(product.sale)}</h4>
                                     </div>
                                     <button onClick={() => handleAddToCart(product)}>
                                         <i className="fa fa-plus"></i>

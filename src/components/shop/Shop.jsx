@@ -1,9 +1,17 @@
 import './Style.css'
-import React from "react"
+import React, { useContext } from "react"
 import Category from "./Category"
 import ShopCart from "./ShopCart"
+import { ShopContext } from '../../common/context/ShopContext'
+import { useNavigate } from 'react-router-dom'
 
 const Shop = ({ shopItems, handleAddToCart }) => {
+    const { scrollToTop } = useContext(ShopContext)
+    const navigate = useNavigate()
+    const handleGoAllProduct = () => {
+        navigate('/menu')
+        scrollToTop()
+    }
     return(
         <>
             <section className="shop background">
@@ -13,9 +21,9 @@ const Shop = ({ shopItems, handleAddToCart }) => {
                     <div className="contentWidth">
                         <div className="heading d_flex">
                             <div className="heading-left row f_flex">
-                                <h2>Mobile Phones</h2>
+                                <h2>Mobile Phones & Hat</h2>
                             </div>
-                            <div className="heading-right row">
+                            <div className="heading-right row" onClick={handleGoAllProduct}>
                                 <span>View all</span>
                                 <i className="fa fa-caret-right icon"></i>
                             </div>

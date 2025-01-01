@@ -5,7 +5,7 @@ import { ShopContext } from "../../common/context/ShopContext"
 import './Style.css'
 
 const Cart = () => {
-    const { scrollToTop } = useContext(ShopContext)
+    const { scrollToTop, toVND } = useContext(ShopContext)
     return(
         <>
             <div className="content gird">
@@ -16,7 +16,7 @@ const Cart = () => {
                                 <img src={item.cover} alt="" className="icon"/>
                             </Link>          
                             <h4>{item.name}</h4>
-                            <p>${item.price}.00</p>
+                            <p>₫{toVND(item.price)}</p>
                         </div>
                     )
                 })}

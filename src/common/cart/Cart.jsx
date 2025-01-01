@@ -1,8 +1,11 @@
-import React from "react"
+import React, { useContext } from "react"
 import './Cart.css'
+import { Link } from "react-router-dom"
+import { ShopContext } from "../context/ShopContext"
 
 const Cart = ({ cartItem, handleAddToCart, handleDeleteCart, handleDeleteQty }) => {
     const totalPrice = cartItem.reduce((price, item) => price + item.price * item.qty, 0)
+    const { scrollToTop, toVND } = useContext(ShopContext)
     return (
         <>
             <section className="cart-items">
@@ -21,8 +24,8 @@ const Cart = ({ cartItem, handleAddToCart, handleDeleteCart, handleDeleteQty }) 
                                     <div className="cart-info">
                                         <h3>{item.name}</h3>
                                         <div className="cart-price">
-                                            <h4 className="price1">Price: ${item.price}.00</h4>
-                                            <h4 className="total1">Total: ${productQty}.00</h4>
+                                            <h4 className="price1">Price: {toVND(item.price)}</h4>
+                                            <h4 className="total1">Total: {toVND(productQty)}</h4>
                                         </div>
                                     </div>
                                     <div className="cart-action">
@@ -50,8 +53,12 @@ const Cart = ({ cartItem, handleAddToCart, handleDeleteCart, handleDeleteQty }) 
                         <div className="cart-total">
                             <h2>Cart Summary</h2>
                             <div className="cart-total-content d_flex">
+                                <h4>Product Quantity</h4>
+                                <h3>{cartItem.length}</h3>
+                            </div>
+                            <div className="cart-total-content d_flex">
                                 <h4>Total Price</h4>
-                                <h3>${totalPrice}.00</h3>
+                                <h3>{toVND(totalPrice)}</h3>
                             </div>
                             <div className="cart-total-content d_flex">
                                 <h4>Fee</h4>
@@ -59,8 +66,9 @@ const Cart = ({ cartItem, handleAddToCart, handleDeleteCart, handleDeleteQty }) 
                             </div>
                             <div className="cart-total-content d_flex">
                                 <h4>Pay Total Price</h4>
-                                <h3>${totalPrice}.00</h3>
+                                <h3 className="color-price">{toVND(totalPrice)}</h3>
                             </div>
+                            <Link to="/order" onClick={scrollToTop}><button className="pay">Order</button></Link>
                         </div>
                     }
                 </div>

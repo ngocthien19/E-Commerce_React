@@ -1,0 +1,59 @@
+.describe-container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.describe-container .desc-left {
+    width: 70%;
+    height: 90vh;
+    min-height: 100vh;
+    background-color: #fff;
+    box-shadow: var(--boxShadow);
+    border-radius: 10px;
+    padding: 50px;
+    margin-right: 50px;
+}
+
+.describe-container .desc-left .title {
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #e1e0e0;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 40px;
+}
+
+.describe-container .desc-left .mt {
+    margin-top: 60px;
+}
+
+.describe-container .desc-left .desc {
+    width: 90%;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    display: inline-block;
+}
+
+.describe-container .desc-left .box-desc {
+    display: flex;
+    margin-bottom: 25px;
+}
+
+.describe-container .desc-left .box-desc .sub-title {
+    width: 20%;
+    color: gray;
+    margin-right: 24px;  
+}
+
+.describe-container .desc-left .box-desc .details-desc {
+    width: auto;
+}
+
+.describe-container .desc-left .box-desc .breadcrumb {
+    padding: 0;
+}
+
+.describe-container .d-right {
+    width: 20%;
+}

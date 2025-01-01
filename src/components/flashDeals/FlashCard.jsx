@@ -52,7 +52,7 @@ const FlashCard = ({ productItems, handleAddToCart }) => {
         prevArrow: <PrevArrow />,
     };
 
-    const { scrollToTop } = useContext(ShopContext)
+    const { scrollToTop, toVND } = useContext(ShopContext)
 
     return (
         <>
@@ -89,8 +89,8 @@ const FlashCard = ({ productItems, handleAddToCart }) => {
                                     </div>
                                     <div className="price">
                                         <div className="p-price">
-                                            <h4>{product.price}.00</h4>
-                                            <h4 className="sale">{product.sale}.00</h4>
+                                            <h4>₫{toVND(product.price)}</h4>
+                                            <h4 className="sale">₫{toVND(product.sale)}</h4>
                                         </div>
                                         <button onClick={() => handleAddToCart(product)}>
                                             <i className="fa fa-plus"></i>

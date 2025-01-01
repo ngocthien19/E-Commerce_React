@@ -4,8 +4,8 @@ import { ShopContext } from "../../common/context/ShopContext"
 import './RelatedProduct.css'
 
 const RelatedProduct = ({ newProduct, ItemProduct, handleAddToCart }) => {
-    const newProductExcept = newProduct.filter(item => item.id !== ItemProduct.id)
-    const { scrollToTop } = useContext(ShopContext)
+    const newProductExcept = newProduct.filter(item => item.id !== ItemProduct.id && item.category === ItemProduct.category)
+    const { scrollToTop, toVND } = useContext(ShopContext)
     
     return(
         <>
@@ -28,7 +28,7 @@ const RelatedProduct = ({ newProduct, ItemProduct, handleAddToCart }) => {
                                                 <label>{product.like}</label> <br />
                                                 <i
                                                     className="fa-regular fa-heart"
-                                                        // onClick={() => handleInc(product.id)}
+                                                        // onClick={() => handleIncrement(product.id)}
                                                 ></i>
                                             </div>
                                         </div>
@@ -44,8 +44,8 @@ const RelatedProduct = ({ newProduct, ItemProduct, handleAddToCart }) => {
                                             </div>
                                             <div className="price">
                                                 <div className="p-price">
-                                                    <h4>{product.price}.00</h4>
-                                                    <h4 className="sale">{product.sale}.00</h4>
+                                                    <h4>₫{toVND(product.price)}</h4>
+                                                    <h4 className="sale">₫{toVND(product.sale)}</h4>
                                                 </div>
                                                 <button onClick={() => handleAddToCart(product)}>
                                                     <i className="fa fa-plus"></i>

@@ -1,15 +1,15 @@
-import React, { useContext } from "react"
 import './ProductDetail.css'
+import React, { useContext } from "react"
 import BreadCrumb from "../breadcrumb/BreadCrumb"
 import { useParams } from "react-router-dom"
 import { ShopContext } from "../../common/context/ShopContext"
-import { Link } from "react-router-dom"
 import RelatedProduct from "../RelatedProduct/RelatedProduct"
+import Describe from "./Describe"
 
 
 const ProductDetail = ({ category, handleAddToCart }) => {
     const { id } = useParams()
-    const { newProduct } = useContext(ShopContext)
+    const { newProduct, toVND } = useContext(ShopContext)
     
     const ItemProduct = newProduct.find(item => item.id === (+id))
     
@@ -42,14 +42,19 @@ const ProductDetail = ({ category, handleAddToCart }) => {
                                 <span className="sold">({ItemProduct.sold})</span>
                             </div>
                             <div className="price">
-                                <span className="under">${ItemProduct.price}.00</span>
-                                <span className="sale">${ItemProduct.sale}.00</span>
+                                <span className="under">₫{toVND(ItemProduct.price)}</span>
+                                <span className="sale">₫{toVND(ItemProduct.sale)}</span>
+                                <span className="off-price">(-{ItemProduct.discount}%)</span>
                             </div>
                             <p className="desc">{ItemProduct.desc}</p>
                             <button onClick={() => handleAddToCart(ItemProduct)} className="btn_action">Add to Cart</button>
                             <h4 className="sub-desc">Category: <span>{category}</span></h4>
                         </div>
                     </div>
+                    <Describe 
+                        category={category}
+                        ItemProduct={ItemProduct}
+                    />
                     <RelatedProduct 
                         newProduct={newProduct}
                         ItemProduct={ItemProduct}

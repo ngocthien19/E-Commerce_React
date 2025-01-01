@@ -22,10 +22,15 @@
     justify-content: flex-end;
     font-size: 20px;
     color: #a2a1a1;
+    cursor: pointer;
 }
 
 .topCat .heading-right span {
     margin-right: 10px;
+}
+
+.topCat .heading-right:hover span {
+    text-decoration: underline;
 }
 
 .topCat .d_flex {

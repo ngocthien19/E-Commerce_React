@@ -1,14 +1,14 @@
 import React, { useContext } from "react"
 import { DiscountData } from "../../data/data"
 import Slider from "react-slick"
-import { Link } from "react-router-dom/cjs/react-router-dom.min"
+import { Link } from "react-router-dom"
 import { ShopContext } from "../../common/context/ShopContext"
 import './Style.css'
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 
 const DisCart = () => {
-    const { scrollToTop } = useContext(ShopContext)
+    const { scrollToTop, toVND } = useContext(ShopContext)
     const settings = {
         dots: false,
         infinite: true,
@@ -29,7 +29,7 @@ const DisCart = () => {
                                     </Link>
                                 </div>
                                 <h4>{item.name}</h4>
-                                <p>${item.price}.00</p>
+                                <p>₫{toVND(item.price)}</p>
                             </div>
                         </div>
                     )

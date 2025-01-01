@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 
 const ModalCategory = ({ showCategory, setShowCategory }) => {
 
-    const { newProduct } = useContext(ShopContext)
+    const { newProduct, scrollToTop } = useContext(ShopContext)
 
     const uniqueCategories = [];
     const categoriesSet = new Set();
@@ -17,6 +17,11 @@ const ModalCategory = ({ showCategory, setShowCategory }) => {
             uniqueCategories.push(item);
         }
     });
+
+    const handleGoCategory = () => {
+        setShowCategory(false)
+        scrollToTop()
+    }
 
     return(
         <>
@@ -30,7 +35,7 @@ const ModalCategory = ({ showCategory, setShowCategory }) => {
                 <ul className="modal-list">
                     {uniqueCategories.map((item, i) => {
                         return (
-                            <Link to={`/${item.category}`} onClick={() => setShowCategory(false)}>
+                            <Link to={`/${item.category}`} onClick={handleGoCategory}>
                                 <li className="modal-item" key={i}>
                                     {item.icon} {item.category}
                                 </li>

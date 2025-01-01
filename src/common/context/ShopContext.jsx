@@ -22,7 +22,20 @@ const ShopContextProvider = ({ children }) => {
         });
     };
 
-    const valueContext = {newProduct, scrollToTop}
+    const toVND = (value) => {
+        value = value.toString().replace(/\./g, "");
+        const formatted = new Intl.NumberFormat("it-IT", {
+            style: "currency",
+            currency: "VND",
+            })
+            .format(value)
+            .replace("₫", "")
+            .trim();
+        
+        return formatted;
+    }
+
+    const valueContext = {newProduct, scrollToTop, toVND}
     return (
         <ShopContext.Provider value={valueContext}>
             {children}

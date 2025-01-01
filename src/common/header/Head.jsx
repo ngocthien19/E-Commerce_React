@@ -5,13 +5,13 @@ const Head = () => {
         <>
             <section className="head">
                 <div className="container d_flex">
-                    <div className="left row">
+                    <div className="left row1">
                         <i className="fa fa-phone"></i>
                         <label>+8437 8240 914</label>
                         <i className="fa fa-envelope"></i>
                         <label>example@gmail.com</label>
                     </div>
-                    <div className="right row RText">
+                    <div className="right row1 RText">
                         <label>Theme FAQ's</label>
                         <label>Need Helps</label>
                         <i class="fa-solid fa-flag"></i>

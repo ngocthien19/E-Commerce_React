@@ -83,6 +83,12 @@
     margin-left: 20px;
 }
 
+.details .details-container .d-right .price .off-price {
+    margin-left: 10px;
+    color: #e94560;
+    font-weight: bold;
+}
+
 .details .details-container .d-right .desc {
     font-size: 16px;
     line-height: 1.6;

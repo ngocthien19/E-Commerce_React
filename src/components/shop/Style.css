@@ -79,6 +79,14 @@
     margin-right: 10px;
 }
 
+.shop .heading-right {
+    cursor: pointer;
+}
+
+.shop .heading-right:hover span {
+    text-decoration: underline;
+}
+
 .shop .d_flex {
     align-items: center;
 }

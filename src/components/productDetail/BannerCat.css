@@ -1,0 +1,42 @@
+.banner-cat {
+    background-color: #fff;
+    box-shadow: var(--boxShadow);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.banner-cat .box {
+    padding: 20px 0;
+    border-bottom: 3px solid #e8e6e6;
+}
+
+.banner-cat .box:last-child {
+    border-bottom: none;
+}
+
+.banner-cat .title {
+    font-size: 16px;
+    font-weight: bold;
+    color: gray;
+    margin-bottom: 10px;
+}
+
+.banner-cat .icon-img {
+    width: 100%;
+    height: 100%;
+}
+
+.banner-cat .name {
+    margin-bottom: 8px;
+    text-align: center;
+    display: --webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.banner-cat .name-price {
+    color: #e94560;
+    font-weight: 600;
+    text-align: center;
+}

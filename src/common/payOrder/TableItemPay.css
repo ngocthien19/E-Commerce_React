@@ -1,0 +1,92 @@
+.table1 {
+    padding: 50px 0;
+}
+
+.table {
+    margin: 50px 0 10px;
+    max-width: 90%;
+    overflow-x: auto; 
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.table1 .title {
+    position: relative;
+    font-size: 35px;
+    color: #e94560;
+    font-weight: 600;
+    text-align: center;
+}
+
+.table1 .title::after {
+    position: absolute;
+    content: "";
+    width: 10%;
+    height: 5px;
+    background-color: #a2a2a2;
+    border-radius: 999px;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.table1 .no-product {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.table td {
+    padding: 0;
+    font-size: 16px;
+}
+
+.table tr:nth-of-type(2n + 2) {
+    background-color: #f9f7f7;
+}
+
+.table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+    font-size: 18px;
+    color: #e94560;
+}
+
+.table tr:hover {
+    background-color: #e8e7e7;
+}
+
+.table td img {
+    width: 60px;
+    height: auto;
+    border-radius: 5px;
+    object-fit: cover; 
+    cursor: pointer;
+}
+
+.table td i {
+    padding: 10px;
+}
+@media (max-width: 768px) {
+    .table {
+        max-width: 100%;
+    }
+
+    .table th,
+    .table td {
+        font-size: 14px; 
+    }
+}

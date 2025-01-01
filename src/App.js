@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { Data, ShopData } from './data/data'
 import { useState } from 'react'
 import Header from './common/header/Header'
@@ -17,6 +17,9 @@ import MakeupBanner from './assets/images/banner-makeup.jpg'
 import SunglassBanner from './assets/images/banner-sunglass.jpg'
 import WifiBanner from './assets/images/banner-wifi.jpg'
 import ProductDetail from './components/productDetail/ProductDetail'
+import TableItemPay from './common/payOrder/TableItemPay'
+import PayOrder from './common/payOrder/PayOrder'
+import AllProduct from './components/allProduct/AllProduct'
 
 function App() {
 
@@ -24,6 +27,7 @@ function App() {
   const { shopItems } = ShopData
 
   const [cartItem, setCartItem] = useState([])
+  const [itemPay, setItemPay] = useState([])
 
   const handleAddToCart = (product) => {
     const productExit = cartItem.find(item => item.id === product.id)
@@ -52,86 +56,109 @@ function App() {
         <Header 
           cartItem={cartItem}
         />
-        <Switch>
-          <Route exact path="/">
-            <Pages 
+        <Routes>
+          <Route path="/" element={<Pages 
               productItems={productItems}
               shopItems={shopItems}
               handleAddToCart={handleAddToCart}
-            />
-          </Route>
-          <Route exact path="/cart">
-            <Cart 
+            />}
+          />
+          <Route  path="/menu" element={<AllProduct 
+              handleAddToCart={handleAddToCart}
+            />}
+          />
+          <Route path="/cart" element={<Cart 
               cartItem={cartItem}
               handleAddToCart={handleAddToCart}
               handleDeleteCart={handleDeleteCart}
               handleDeleteQty={handleDeleteQty}
-            />
-          </Route>
+            />}
+          />
+          <Route path="/track-order" element={<TableItemPay
+              itemPay={itemPay}
+            />}
+          />
+          <Route exact path="/order" element={<PayOrder
+              cartItem={cartItem}
+              setCartItem={setCartItem}
+              setItemPay={setItemPay}
+              handleDeleteCart={handleDeleteCart}
+            />}
+          />
 
-          <Route exact path="/earphone">
-            <Product category="earphone" banner={EarphoneBanner} handleAddToCart={handleAddToCart} />
-          </Route>
-          <Route path="/earphone/:id">
-            <ProductDetail category="earphone" handleAddToCart={handleAddToCart} />
-          </Route>
-
-          <Route exact path="/mobile">
-            <Product category="mobile" banner={MobileBanner} handleAddToCart={handleAddToCart} />
-          </Route>
-          <Route exact path="/mobile/:id">
-            <ProductDetail category="mobile" handleAddToCart={handleAddToCart} />
-          </Route>
-
-          <Route exact path="/hat">
-            <Product category="hat" banner={HatBanner} handleAddToCart={handleAddToCart} />
-          </Route>
-          <Route exact path="/hat/:id">
-            <ProductDetail category="hat" handleAddToCart={handleAddToCart} />
-          </Route>
-
-          <Route exact path="/watch">
-            <Product category="watch" banner={WatchBanner} handleAddToCart={handleAddToCart} />
-          </Route>
-          <Route exact path="/watch/:id">
-            <ProductDetail category="watch" handleAddToCart={handleAddToCart} />
-          </Route>
-
-          <Route exact path="/shoes">
-            <Product category="shoes" banner={ShoesBanner} handleAddToCart={handleAddToCart} />
-          </Route>
-          <Route exact path="/shoes/:id">
-            <ProductDetail category="shoes" handleAddToCart={handleAddToCart} />
-          </Route>
-
-          <Route exact path="/sunglass">
-            <Product category="sunglass" banner={SunglassBanner} handleAddToCart={handleAddToCart} />
-          </Route>
-          <Route exact path="/sunglass/:id">
-            <ProductDetail category="sunglass" handleAddToCart={handleAddToCart} />
-          </Route>
-
-          <Route exact path="/makeup">
-            <Product category="makeup" banner={MakeupBanner} handleAddToCart={handleAddToCart} />
-          </Route>
-          <Route exact path="/makeup/:id">
-            <ProductDetail category="makeup" handleAddToCart={handleAddToCart} />
-          </Route>
-
-          <Route exact path="/tree">
-            <Product category="tree" banner={TreeBanner} handleAddToCart={handleAddToCart} />
-          </Route>
-          <Route exact path="/tree/:id">
-            <ProductDetail category="tree" handleAddToCart={handleAddToCart} />
-          </Route>
-
-          <Route exact path="/wifi">
-            <Product category="wifi" banner={WifiBanner} handleAddToCart={handleAddToCart} />
-          </Route>
-          <Route exact path="/wifi/:id">
-            <ProductDetail category="wifi" handleAddToCart={handleAddToCart} />
-          </Route>
-        </Switch>
+          <Route
+            path="/earphone"
+            element={<Product category="earphone" banner={EarphoneBanner} handleAddToCart={handleAddToCart} />}
+          />
+          <Route
+            path="/earphone/:id"
+            element={<ProductDetail category="earphone" handleAddToCart={handleAddToCart} />}
+          />
+          <Route
+            path="/mobile"
+            element={<Product category="mobile" banner={MobileBanner} handleAddToCart={handleAddToCart} />}
+          />
+          <Route
+            path="/mobile/:id"
+            element={<ProductDetail category="mobile" handleAddToCart={handleAddToCart} />}
+          />
+          <Route
+            path="/hat"
+            element={<Product category="hat" banner={HatBanner} handleAddToCart={handleAddToCart} />}
+          />
+          <Route
+            path="/hat/:id"
+            element={<ProductDetail category="hat" handleAddToCart={handleAddToCart} />}
+          />
+          <Route
+            path="/watch"
+            element={<Product category="watch" banner={WatchBanner} handleAddToCart={handleAddToCart} />}
+          />
+          <Route
+            path="/watch/:id"
+            element={<ProductDetail category="watch" handleAddToCart={handleAddToCart} />}
+          />
+          <Route
+            path="/shoes"
+            element={<Product category="shoes" banner={ShoesBanner} handleAddToCart={handleAddToCart} />}
+          />
+          <Route
+            path="/shoes/:id"
+            element={<ProductDetail category="shoes" handleAddToCart={handleAddToCart} />}
+          />
+          <Route
+            path="/sunglass"
+            element={<Product category="sunglass" banner={SunglassBanner} handleAddToCart={handleAddToCart} />}
+          />
+          <Route
+            path="/sunglass/:id"
+            element={<ProductDetail category="sunglass" handleAddToCart={handleAddToCart} />}
+          />
+          <Route
+            path="/makeup"
+            element={<Product category="makeup" banner={MakeupBanner} handleAddToCart={handleAddToCart} />}
+          />
+          <Route
+            path="/makeup/:id"
+            element={<ProductDetail category="makeup" handleAddToCart={handleAddToCart} />}
+          />
+          <Route
+            path="/tree"
+            element={<Product category="tree" banner={TreeBanner} handleAddToCart={handleAddToCart} />}
+          />
+          <Route
+            path="/tree/:id"
+            element={<ProductDetail category="tree" handleAddToCart={handleAddToCart} />}
+          />
+          <Route
+            path="/wifi"
+            element={<Product category="wifi" banner={WifiBanner} handleAddToCart={handleAddToCart} />}
+          />
+          <Route
+            path="/wifi/:id"
+            element={<ProductDetail category="wifi" handleAddToCart={handleAddToCart} />}
+          />
+        </Routes>
         <Footer />
       </Router>
     </>

@@ -1,8 +1,16 @@
-import React from "react"
-import './Style.css'
+import React, { useContext } from "react"
 import DisCart from "./DisCart"
+import './Style.css'
+import { useNavigate } from "react-router-dom"
+import { ShopContext } from "../../common/context/ShopContext"
 
 const Discount = () => {
+    const { scrollToTop } = useContext(ShopContext)
+    const navigate = useNavigate()
+    const handleGoAllProduct = () => {
+        navigate('/menu')
+        scrollToTop()
+    }
     return(
         <>
             <section className="topDiscount background">
@@ -12,7 +20,7 @@ const Discount = () => {
                             <i class="fa-solid fa-gift"></i>
                             <h2>Big Discount</h2>
                         </div>
-                        <div className="heading-right row">
+                        <div className="heading-right row" onClick={handleGoAllProduct}>
                             <span>View all</span>
                             <i className="fa fa-caret-right"></i>
                         </div>

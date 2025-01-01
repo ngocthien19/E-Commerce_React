@@ -18,10 +18,15 @@
     justify-content: flex-end;
     font-size: 20px;
     color: #a2a1a1;
+    cursor: pointer;
 }
 
 .topDiscount .heading-right span {
     margin-right: 10px;
+}
+
+.topDiscount .heading-right:hover span {
+    text-decoration: underline;
 }
 
 .topDiscount .d_flex {
