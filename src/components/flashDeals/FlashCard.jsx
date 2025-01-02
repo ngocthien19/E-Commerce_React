@@ -59,7 +59,7 @@ const FlashCard = ({ productItems, handleAddToCart }) => {
             <Slider {...settings}>
                 {products.map((product) => {
                     return (
-                        <div className="box" key={product.id}>
+                        <div className="box" key={product.id} data-aos="flip-left">
                             <div className="product">
                                 <div className="img">
                                     <div className="discount">
@@ -89,7 +89,7 @@ const FlashCard = ({ productItems, handleAddToCart }) => {
                                     </div>
                                     <div className="price">
                                         <div className="p-price">
-                                            <h4>₫{toVND(product.price)}</h4>
+                                            <h4>₫{toVND(product.sale - product.sale * product.discount / 100)}</h4>
                                             <h4 className="sale">₫{toVND(product.sale)}</h4>
                                         </div>
                                         <button onClick={() => handleAddToCart(product)}>

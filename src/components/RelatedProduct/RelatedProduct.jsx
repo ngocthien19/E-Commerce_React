@@ -10,12 +10,12 @@ const RelatedProduct = ({ newProduct, ItemProduct, handleAddToCart }) => {
     return(
         <>
             <div className="related-products">
-                <h2 className="title">Related Products</h2>
+                <h2 className="title" data-aos="fade-down">Related Products</h2>
                 <div className="related-gird5">
                         {newProductExcept.map((product, i) => {
                             return (
                                 <div className="box" key={product.id}>
-                                    <div className="product">
+                                    <div className="product" data-aos="flip-right">
                                         <div className="img">
                                             <div className="discount">
                                                 <span className="percent">{product.discount}%</span>

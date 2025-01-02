@@ -20,7 +20,7 @@ const TopCart = () => {
             <Slider {...settings}>
                 {TopCates.map((item, i) => {
                     return (
-                        <div className="box" key={i}>
+                        <div className="box" key={i} data-aos="flip-right">
                             <div className="product">
                                 <div className="nameTop d_flex">
                                     <span className="t-left">{item.para}</span>

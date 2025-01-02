@@ -11,11 +11,14 @@ const TableItemPay = ({ itemPay }) => {
         navigate(`/${item.category}/${item.id}`)
         scrollToTop()
     }
+
+    const getTotalQty = () => itemPay.reduce((total, item) => total + item.qty, 0)
+    const getTotalPrice = () => itemPay.reduce((total, item) => total + item.price * item.qty, 0)
     return (
         <>
             <div className='table1 container'>
-                <h2 className='title'>My order</h2>
-                <div className='table'>
+                <h2 className='title' data-aos="fade-down">My order</h2>
+                <div className='table' data-aos="fade-down">
                     <table>
                         <thead>
                             <tr>
@@ -36,7 +39,7 @@ const TableItemPay = ({ itemPay }) => {
                                         <td>{item.id}</td>
                                         <td onClick={() => handleNavigateAndScroll(item)}>
                                             <img src={item.cover} alt='' />
-                                        </td>
+                                        </td>   
                                         <td>{item.name}</td>
                                         <td>{item.qty}</td>
                                         <td>{toVND(item.price)}</td>
@@ -45,11 +48,22 @@ const TableItemPay = ({ itemPay }) => {
                                     </tr>
                                 )
                             })}
+                            {itemPay.length > 0 && 
+                                    <tr className='tr-color'>
+                                    <td className='total'>Total:</td>
+                                    <td></td>   
+                                    <td></td>
+                                    <td className='total'>{getTotalQty() > 0 && getTotalQty()}</td>
+                                    <td></td>
+                                    <td className='total'>{toVND(getTotalPrice() > 0 && getTotalPrice())}</td>
+                                    <td></td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
                 {itemPay.length === 0 &&
-                    <span className='no-product'>No products are ordered</span>
+                    <div data-aos="zoom-out"><span className='no-product'>No products are ordered</span></div>
                 }
             </div>
         </>

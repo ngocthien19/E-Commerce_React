@@ -4,7 +4,7 @@ import { ShopContext } from "../context/ShopContext"
 import { useNavigate  } from 'react-router-dom'
 import './PayOrder.css'
 
-const PayOrder = ({ cartItem, setCartItem, setItemPay, handleDeleteCart }) => {
+const PayOrder = ({ cartItem, itemPay, setActiveMenu, setCartItem, setItemPay, handleDeleteCart }) => {
     const navigate  = useNavigate()
     const { scrollToTop, toVND } = useContext(ShopContext)
     const [selectedValue, setSelectedValue] = useState('')
@@ -19,14 +19,16 @@ const PayOrder = ({ cartItem, setCartItem, setItemPay, handleDeleteCart }) => {
     const totalAmount = getTotalPrice - (getTotalPrice * (selectedValue / 100))
 
     const handleGoAllProduct = () => {
+        setActiveMenu("menu")
         navigate('/menu')
         scrollToTop()
     }
 
     const handlePay = () => {
         alert("Pay Successfully!")
-        setItemPay(cartItem)
+        setItemPay([...itemPay, ...cartItem])
         setCartItem([])
+        setActiveMenu("track-order")
         navigate('/track-order')
         scrollToTop()
     }
@@ -35,7 +37,7 @@ const PayOrder = ({ cartItem, setCartItem, setItemPay, handleDeleteCart }) => {
         <>
             <div className="order-pay container">
                 <div className="box">
-                    <div className="o-left">
+                    <div className="o-left" data-aos="fade-right">
                         <h3 className="order">Order Detail:</h3>
                         <p className="state">State: <strong>Accessed</strong></p>
                         <div className='table1'>
@@ -46,7 +48,7 @@ const PayOrder = ({ cartItem, setCartItem, setItemPay, handleDeleteCart }) => {
                                         <th className="th">Quantity</th>
                                         <th className="th">Price</th>
                                         <th className="th">Total Price</th>
-                                        <th className="th">Action</th>
+                                        <th className="th"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -68,7 +70,7 @@ const PayOrder = ({ cartItem, setCartItem, setItemPay, handleDeleteCart }) => {
                             </table>
                         </div>
                     </div>
-                    <div className="o-right">
+                    <div className="o-right" data-aos="fade-left">
                         <h2 className="order">Total</h2>
                         <div className="img"><img src={Order}  alt="" /></div>
                         <p className="total">Total Price: ₫{toVND(getTotalPrice)}</p>

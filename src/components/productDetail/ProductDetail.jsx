@@ -22,7 +22,7 @@ const ProductDetail = ({ category, handleAddToCart }) => {
                         ItemProduct={ItemProduct}
                     />
                     <div className="details-container">
-                        <div className="d-left">
+                        <div className="d-left" data-aos="zoom-out-right">
                             <img src={ItemProduct.cover} alt={ItemProduct.name} className="img-large" />
                             <div className="box-img">
                                 <img src={ItemProduct.cover} alt={ItemProduct.name} />
@@ -31,7 +31,7 @@ const ProductDetail = ({ category, handleAddToCart }) => {
                                 <img src={ItemProduct.cover} alt={ItemProduct.name} />
                             </div>
                         </div>
-                        <div className="d-right">
+                        <div className="d-right" data-aos="zoom-out-left">
                             <h2 className="title">{ItemProduct.name}</h2>
                             <div className="box-rate">
                                 <i className="fa fa-star"></i>
@@ -42,7 +42,7 @@ const ProductDetail = ({ category, handleAddToCart }) => {
                                 <span className="sold">({ItemProduct.sold})</span>
                             </div>
                             <div className="price">
-                                <span className="under">₫{toVND(ItemProduct.price)}</span>
+                                <span className="under">₫{toVND(ItemProduct.sale - ItemProduct.sale * ItemProduct.discount / 100)}</span>
                                 <span className="sale">₫{toVND(ItemProduct.sale)}</span>
                                 <span className="off-price">(-{ItemProduct.discount}%)</span>
                             </div>

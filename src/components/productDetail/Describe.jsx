@@ -8,7 +8,7 @@ const Describe = ({ category, ItemProduct }) => {
     return(
         <>
             <div className="describe-container">
-                <div className="desc-left">
+                <div className="desc-left" data-aos="zoom-out-right">
                     <h2 className="title">PRODUCT DETAIL</h2>
                     <div className="box-desc">
                         <span className="sub-title">Directory</span>

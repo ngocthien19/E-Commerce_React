@@ -16,7 +16,7 @@ const BannerCat = ({ ItemProduct }) => {
         const randomIds = new Set()
 
         while (randomIds.size < count) {
-            randomIds.add(randomIntFromInterval(1, 32))
+            randomIds.add(randomIntFromInterval(1, 55))
             if (randomIds.has(ItemProduct?.id)) {
                 randomIds.delete(ItemProduct.id)
             }
@@ -29,7 +29,7 @@ const BannerCat = ({ ItemProduct }) => {
 
     return(
         <>
-            <div className="banner-cat">
+            <div className="banner-cat" data-aos="zoom-out-left">
                 <h3 className="title">Top Highlight Category</h3>
                 {listBannerCat.map((item, i) => {
                     return (

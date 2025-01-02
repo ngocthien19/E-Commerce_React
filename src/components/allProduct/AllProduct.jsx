@@ -74,8 +74,8 @@ const AllProduct = ({ handleAddToCart }) => {
         <>
             <section className="all-product">
                 <div className="container">
-                    <h2 className="title">All Product</h2>
-                    <div className="icon">
+                    <h2 className="title" data-aos="fade-down">All Product</h2>
+                    <div className="icon" data-aos="fade-down-right">
                         <i className={`fa-solid fa-sort`} onClick={() => setModalSort(!modalSort)}></i>
                         <motion.div 
                             className={modalSort ? "modal-sort" : "modal-sort hide"}
@@ -89,7 +89,7 @@ const AllProduct = ({ handleAddToCart }) => {
                             <p className="cancel-sort" onClick={() => handleGoSort("cancel-sort")}>Cancel Sort</p>
                         </motion.div>
                     </div>
-                    <div className="grid5">
+                    <div className="grid5" data-aos="zoom-in-down">
                         {currentItems.map((product) => {
                             return (
                                 <div className="box" key={product.id}>
@@ -100,7 +100,7 @@ const AllProduct = ({ handleAddToCart }) => {
                                                 <span className="off">OFF</span>
                                             </div>
                                             <Link to={`/${product.category}/${product.id}`} onClick={scrollToTop}>
-                                                <img src={product.cover} alt="" />
+                                                <img src={product.cover} alt="" loading="lazy" />
                                             </Link>
                                             <div className="product-like">
                                                 <label>{product.like}</label> <br />
@@ -122,7 +122,7 @@ const AllProduct = ({ handleAddToCart }) => {
                                             </div>
                                             <div className="price">
                                                 <div className="p-price">
-                                                    <h4>₫{toVND(product.price)}</h4>
+                                                    <h4>₫{toVND(product.sale - product.sale * product.discount / 100)}</h4>
                                                     <h4 className="sale">₫{toVND(product.sale)}</h4>
                                                 </div>
                                                 <button onClick={() => handleAddToCart(product)}>

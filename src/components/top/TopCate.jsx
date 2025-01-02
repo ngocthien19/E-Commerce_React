@@ -16,11 +16,11 @@ const TopCate = () => {
             <section className="topCat background">
                 <div className="container">
                     <div className="heading d_flex">
-                        <div className="heading-left row f_flex">
+                        <div className="heading-left row f_flex" data-aos="fade-down">
                             <i className="fa fa-border-all"></i>
                             <h2>Top Categories</h2>
                         </div>
-                        <div className="heading-right row" onClick={handleGoAllProduct}>
+                        <div className="heading-right row" onClick={handleGoAllProduct} data-aos="fade-down">
                             <span>View all</span>
                             <i className="fa fa-caret-right"></i>
                         </div>

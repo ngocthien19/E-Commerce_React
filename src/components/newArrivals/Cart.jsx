@@ -11,7 +11,7 @@ const Cart = () => {
             <div className="content gird">
                 {NewArrivals.map((item, i) => {
                     return (
-                        <div className="box">     
+                        <div className="box" data-aos="fade-up">     
                             <Link to={`/${item.category}/${item.id}`} onClick={scrollToTop}>
                                 <img src={item.cover} alt="" className="icon"/>
                             </Link>          

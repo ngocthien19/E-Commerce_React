@@ -21,7 +21,7 @@ const DisCart = () => {
             <Slider {...settings}>
                 {DiscountData.map((item, i) => {
                     return (
-                        <div className="box">
+                        <div className="box" data-aos="flip-left">
                             <div className="product">
                                 <div className="img">
                                     <Link to={`/${item.category}/${item.id}`} onClick={scrollToTop}>

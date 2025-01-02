@@ -22,18 +22,18 @@ const Search = ({ cartItem, setActiveMenu }) => {
         <>
         <section className="search">
             <div className="container c_flex">
-                <div className="logo width">
+                <div className="logo width" data-aos="fade-right">
                     <Link to="/" onClick={handleScrollAndActiveMenu}>
                         <img src={logo} alt="" />
                     </Link>
                 </div>
-                <div className="search-box f_flex">
+                <div className="search-box f_flex" data-aos="fade-left">
                     <i className="fa fa-search"></i>
                     <input type="text" placeholder="Search and hit enter..." />
                     <span>All Categories</span>
                 </div>
 
-                <div className="icon f_flex width">
+                <div className="icon f_flex width" data-aos="fade-left">
                     <i className="fa fa-user icon-circle"></i>
                     <div className="cart">
                         <Link to="/cart" onClick={scrollToTop}>

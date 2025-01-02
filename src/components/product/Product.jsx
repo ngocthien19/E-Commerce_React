@@ -13,12 +13,12 @@ const Product = ({ category, banner, handleAddToCart }) => {
     return(
         <>
             <div className="product-detail">
-                <img src={banner} alt={category} className="banner" />
-                <h2 className="title">{category} Product</h2>
+                <img src={banner} alt="" className="banner" data-aos="fade-down" />
+                <h2 className="title" data-aos="fade-down">{category} Product</h2>
                 <div className="container-product">
                     {productsItem.map((product) => {
                         return (
-                            <div className="box" key={product.id}>
+                            <div className="box" key={product.id} data-aos="fade-left">
                                 <div className="product">
                                     <div className="img">
                                         <div className="discount">

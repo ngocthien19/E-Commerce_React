@@ -2,9 +2,9 @@
     padding: 50px 0;
 }
 
-.table {
+.table1 .table {
     margin: 50px 0 10px;
-    max-width: 90%;
+    max-width: 100%;
     overflow-x: auto; 
     border-collapse: collapse;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -50,12 +50,23 @@
 }
 
 .table td {
-    padding: 0;
+    padding: 5px 0;
     font-size: 16px;
 }
 
-.table tr:nth-of-type(2n + 2) {
+.table .total {
+    padding: 20px 0;
+    font-size: 22px;
+    font-weight: bold;
+    color: #0f3460;
+}
+
+.table tr:nth-of-type(2n + 2):not(:last-child) {
     background-color: #f9f7f7;
+}
+
+.table .tr-color {
+    background-color: #e5f2ff;
 }
 
 .table th {
@@ -65,13 +76,13 @@
     color: #e94560;
 }
 
-.table tr:hover {
+.table tr:hover:not(:last-child) {
     background-color: #e8e7e7;
 }
 
 .table td img {
     width: 60px;
-    height: auto;
+    height: 60px;
     border-radius: 5px;
     object-fit: cover; 
     cursor: pointer;

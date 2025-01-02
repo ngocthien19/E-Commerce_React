@@ -10,9 +10,9 @@ const Cart = ({ cartItem, handleAddToCart, handleDeleteCart, handleDeleteQty }) 
         <>
             <section className="cart-items">
                 <div className="container cart">
-                    <div className="cart-details">
+                    <div className="cart-details" data-aos="zoom-in-right">
                         {cartItem.length === 0 && 
-                            <h1 className="no-items cart-list">No Items are added in Cart</h1>
+                            <h1 className="no-items cart-list" data-aos="zoom-in-right">No Items are added in Cart</h1>
                         }
                         {cartItem.map(item => {
                             const productQty = item.price * item.qty
@@ -50,7 +50,7 @@ const Cart = ({ cartItem, handleAddToCart, handleDeleteCart, handleDeleteQty }) 
                         })}
                     </div>
                     {cartItem.length > 0 && 
-                        <div className="cart-total">
+                        <div className="cart-total" data-aos="zoom-in-left">
                             <h2>Cart Summary</h2>
                             <div className="cart-total-content d_flex">
                                 <h4>Product Quantity</h4>

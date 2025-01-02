@@ -18,8 +18,8 @@ const Shop = ({ shopItems, handleAddToCart }) => {
                 <div className="container flex">
                     <Category />
 
-                    <div className="contentWidth">
-                        <div className="heading d_flex">
+                    <div className="contentWidth" data-aos="zoom-in-right">
+                        <div className="heading d_flex" data-aos="fade-down">
                             <div className="heading-left row f_flex">
                                 <h2>Mobile Phones & Hat</h2>
                             </div>

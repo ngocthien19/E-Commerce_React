@@ -8,10 +8,10 @@ const Annu = () => {
         <>
             <section className="anno background">
                 <div className="container box">
-                    <div className="img1">
+                    <div className="img1" data-aos="fade-up-right">
                         <img src={banner1} width="100%" height="100%"/>
                     </div>
-                    <div className="img2">
+                    <div className="img2" data-aos="fade-up-left">
                         <img src={banner2} width="100%" height="100%"/>
                     </div>
                 </div>

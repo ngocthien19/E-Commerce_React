@@ -9,7 +9,7 @@ const BreadCrumb = ({ category, ItemProduct }) => {
     const { scrollToTop } = useContext(ShopContext)
     return(
         <>
-            <div className="breadcrumb">
+            <div className="breadcrumb" data-aos="fade-down">
                 <Link to="/" onClick={scrollToTop}><span>Home</span></Link>
                 <img src={Arrow} alt="" />
                 <Link to={`/${category}`} onClick={scrollToTop}><span>{category}</span></Link>

@@ -29,8 +29,10 @@
 
 .cart-list .img img {
     width: 200px;
-    height: 200px;
+    height: 180px;
     object-fit: cover;
+    border-radius: 10px;
+    margin: 0 10px;
 }
 
 .cart-info {
@@ -60,7 +62,7 @@
 }
 
 .cart-action {
-    width: 22%;
+    width: 20%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;

@@ -9,7 +9,7 @@ const Wrapper = () => {
                 <div className="container f_flex">
                     {WrapperData.map((item, i) => {
                         return (
-                            <div className="box">
+                            <div className="box" data-aos="zoom-out-right">
                                 <div className="icon-circle">{item.cover}</div>
                                 <h3>{item.title}</h3>
                                 <p>{item.decs}</p>

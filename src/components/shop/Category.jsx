@@ -5,7 +5,7 @@ import './Style.css'
 const Category = () => {
     return(
         <>
-            <div className="category">
+            <div className="category" data-aos="zoom-in-right">
                 <div className="brand d_flex">
                     <h1>Brands</h1>
                     <h1>Shops</h1>
