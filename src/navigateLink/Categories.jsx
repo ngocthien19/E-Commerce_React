@@ -16,8 +16,8 @@ import banner15 from '../assets/images/banner-music.jpg'
 import banner16 from '../assets/images/banner-healthy.jpg'
 import banner17 from '../assets/images/banner-pet.jpg'
 import banner18 from '../assets/images/banner-baby.jpg'
-import banner19 from '../assets/images/banner-wifi.jpg'
-import banner20 from '../assets/images/banner-wifi.jpg'
+import banner19 from '../assets/images/banner-groceries.jpg'
+import banner20 from '../assets/images/banner-book.jpg'
 
 export const categories = [
     { name: 'earphone', banner: banner1 },

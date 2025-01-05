@@ -14,6 +14,7 @@ import ProductDetail from './components/productDetail/ProductDetail'
 import TableItemPay from './common/payOrder/TableItemPay'
 import PayOrder from './common/payOrder/PayOrder'
 import AllProduct from './components/allProduct/AllProduct'
+import SearchItem from './components/searchItem/SearchItem'
 
 function App() {
   const { productItems } = Data
@@ -21,7 +22,10 @@ function App() {
 
   const [cartItem, setCartItem] = useState([])
   const [itemPay, setItemPay] = useState([])
+  const [filteredProducts, setFilteredProducts] = useState([])
+  const [modalSearch, setModalSearch] = useState(false)
   const [activeMenu, setActiveMenu] = useState("home")
+  const [searchTerm, setSearchTerm] = useState("")
 
   useEffect(() => {
     AOS.init()
@@ -53,9 +57,14 @@ function App() {
     <>
       <Router>
         <Header 
-          cartItem={cartItem} 
+          cartItem={cartItem}
+          searchTerm={searchTerm} 
           activeMenu={activeMenu}
+          modalSearch={modalSearch}
+          setSearchTerm={setSearchTerm}
+          setModalSearch={setModalSearch}
           setActiveMenu={setActiveMenu}
+          setFilteredProducts={setFilteredProducts}
         />
         <Routes>
           <Route path="/" element={<Pages productItems={productItems} shopItems={shopItems} handleAddToCart={handleAddToCart} />} />
@@ -63,12 +72,18 @@ function App() {
           <Route path="/cart" element={<Cart cartItem={cartItem} handleAddToCart={handleAddToCart} handleDeleteCart={handleDeleteCart} handleDeleteQty={handleDeleteQty} />} />
           <Route path="/track-order" element={<TableItemPay itemPay={itemPay} />} />
           <Route 
-            exact path="/order" 
+            path="/order" 
             element={<PayOrder cartItem={cartItem} setCartItem={setCartItem} 
-                    itemPay={itemPay} setItemPay={setItemPay} handleDeleteCart={handleDeleteCart}
-                    setActiveMenu={setActiveMenu}
-                  />}
+                        itemPay={itemPay} setItemPay={setItemPay} handleDeleteCart={handleDeleteCart}
+                        setActiveMenu={setActiveMenu}
+                    />}
           />
+          <Route path="/item-search" element={<SearchItem 
+            filteredProducts={filteredProducts}
+            searchTerm={searchTerm}
+            setFilteredProducts={setFilteredProducts}
+            handleAddToCart={handleAddToCart}
+          />}/>
 
           {categories.map(({ name, banner }) => (
             <Route key={name} path={`/${name}`} element={<Product category={name} banner={banner} handleAddToCart={handleAddToCart} />} />

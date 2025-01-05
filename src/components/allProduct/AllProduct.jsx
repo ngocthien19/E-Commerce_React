@@ -55,8 +55,10 @@ const AllProduct = ({ handleAddToCart }) => {
                 setSortOrder(!sortOrder)
                 break
             case "sort-price":
-                sortedProducts.sort((a, b) =>
-                    sortOrder ? a.price - b.price : b.price - a.price
+                sortedProducts.sort((a, b) => 
+                    sortOrder ? (a.sale - a.sale * a.discount / 100) - (b.sale - b.sale * b.discount / 100) 
+                    : 
+                    (b.sale - b.sale * b.discount / 100)  - (a.sale - a.sale * a.discount / 100)
                 )
                 setAllProduct(sortedProducts)
                 setSortOrder(!sortOrder)
@@ -75,7 +77,7 @@ const AllProduct = ({ handleAddToCart }) => {
             <section className="all-product">
                 <div className="container">
                     <h2 className="title" data-aos="fade-down">All Product</h2>
-                    <div className="icon" data-aos="fade-down-right">
+                    <div className="icon">
                         <i className={`fa-solid fa-sort`} onClick={() => setModalSort(!modalSort)}></i>
                         <motion.div 
                             className={modalSort ? "modal-sort" : "modal-sort hide"}
