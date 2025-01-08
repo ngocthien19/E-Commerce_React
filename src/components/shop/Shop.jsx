@@ -5,11 +5,12 @@ import ShopCart from "./ShopCart"
 import { ShopContext } from '../../common/context/ShopContext'
 import { useNavigate } from 'react-router-dom'
 
-const Shop = ({ shopItems, handleAddToCart }) => {
+const Shop = ({ shopItems, handleAddToCart, setSearchTerm }) => {
     const { scrollToTop } = useContext(ShopContext)
     const navigate = useNavigate()
     const handleGoAllProduct = () => {
-        navigate('/menu')
+        setSearchTerm("")
+        navigate('/item-search')
         scrollToTop()
     }
     return(

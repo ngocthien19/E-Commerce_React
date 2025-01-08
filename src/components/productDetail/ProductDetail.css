@@ -47,6 +47,27 @@
     font-weight: 500;
     line-height: 1.6;
     margin-bottom: 20px;
+    margin-left: 40px;
+    position: relative;
+}
+
+.details .details-container .d-right .title::before {
+    content: "Mall";
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px; 
+    height: 24px; 
+    left: -50px; 
+    top: 12px; 
+    font-size: 14px;
+    font-weight: bold; 
+    color: white;
+    border-radius: 4px;
+    border: 1px solid #e94560;
+    background: #e94560;
+    padding: 0; 
 }
 
 .details .details-container .d-right .box-rate {
@@ -63,6 +84,13 @@
 .details .details-container .d-right .box-rate .sold {
     color: gray;
     opacity: 0.8;
+    padding-right: 15px;
+    border-right: 2px solid #ccc;
+}
+
+.details .details-container .d-right .box-rate .like {
+    margin-left: 30px;
+    color: gray;
 }
 
 .details .details-container .d-right .price {
@@ -94,6 +122,17 @@
 .details .details-container .d-right .desc {
     font-size: 16px;
     line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.details .details-container .d-right .from {
+    margin-top: 12px;
+}
+
+.details .details-container .d-right .brand span,
+.details .details-container .d-right .from span {
+    font-weight: bold;
+    margin-left: 8px;
 }
 
 .details .details-container .d-right .btn_action {
@@ -115,10 +154,13 @@
 }
 
 .details .details-container .d-right .sub-desc {
-    margin-top: 20px;
+    margin-top: 10px;
+    font-weight: 400;
 }
 
 .details .details-container .d-right .sub-desc span {
     font-weight: 400;
     text-transform: capitalize;
+    font-weight: bold;
+    margin-left: 8px;
 }

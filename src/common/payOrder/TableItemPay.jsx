@@ -13,7 +13,7 @@ const TableItemPay = ({ itemPay }) => {
     }
 
     const getTotalQty = () => itemPay.reduce((total, item) => total + item.qty, 0)
-    const getTotalPrice = () => itemPay.reduce((total, item) => total + item.price * item.qty, 0)
+    const getTotalPrice = () => itemPay.reduce((total, item) => total + (item.sale - item.sale * item.discount / 100) * item.qty, 0)
     return (
         <>
             <div className='table1 container'>
@@ -33,7 +33,7 @@ const TableItemPay = ({ itemPay }) => {
                         </thead>
                         <tbody>
                             {itemPay.map((item, i) => {
-                                const productQty = item.price * item.qty
+                                const productQty = (item.sale - item.sale * item.discount / 100) * item.qty
                                 return (
                                     <tr>
                                         <td>{item.id}</td>
@@ -42,7 +42,7 @@ const TableItemPay = ({ itemPay }) => {
                                         </td>   
                                         <td>{item.name}</td>
                                         <td>{item.qty}</td>
-                                        <td>{toVND(item.price)}</td>
+                                        <td>{toVND((item.sale - item.sale * item.discount / 100))}</td>
                                         <td>{toVND(productQty)}</td>
                                         <td>Accessed</td>
                                     </tr>

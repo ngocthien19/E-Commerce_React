@@ -15,18 +15,24 @@ const ModalSearch = ({ searchTerm, modalSearch, listNameProduct,
         setSearchTerm(item)
         scrollToTop()
         setModalSearch(false)
+
+        const searchInput = document.getElementById("search-input")
+        if (searchInput) {
+            searchInput.blur()
+        }
+
         const filterItemName = selectedIndex !== -1 
-        ? newProduct.filter(product => {
-            // Tách từ khóa của listNameProduct[selectedIndex] nếu có
-            const searchKeyword = listNameProduct[selectedIndex]?.toLowerCase() || ''
-            
-            // So khớp sản phẩm dựa trên từ khóa
-            return product.name.toLowerCase().includes(searchKeyword)
-        })
-        : newProduct.filter(product => {
-            // Nếu không có selectedIndex (chưa chọn cụ thể), dùng từ khóa đầu vào
-            return product.name.toLowerCase().includes(item.toLowerCase())
-        })
+            ? newProduct.filter(product => {
+                // Tách từ khóa của listNameProduct[selectedIndex] nếu có
+                const searchKeyword = listNameProduct[selectedIndex]?.toLowerCase() || ''
+                
+                // So khớp sản phẩm dựa trên từ khóa
+                return product.name.toLowerCase().includes(searchKeyword)
+            })
+            : newProduct.filter(product => {
+                // Nếu không có selectedIndex (chưa chọn cụ thể), dùng từ khóa đầu vào
+                return product.name.toLowerCase().includes(item.toLowerCase())
+            })
         setFilteredProducts(filterItemName)
     }
 

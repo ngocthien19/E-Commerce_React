@@ -1,65 +1,115 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect, useMemo, useState } from "react"
 import { ShopContext } from "../../common/context/ShopContext"
-import { Link } from "react-router-dom"
+import Item from "../item/Item"
+import FilterProCat from "./FilterProCat"
+import order from '../../assets/images/order.png'
 import './Product.css'
+import NoProAndSort from "./NoProAndSort"
 
-const Product = ({ category, banner, handleAddToCart }) => {
+const Product = ({ category, banner, selectedPrices, selectedBrands, selectedFrom,
+    setSelectedBrands, setSelectedPrices, setSelectedFrom, handleAddToCart 
+}) => {
     const { newProduct } = useContext(ShopContext)
-    const productsItem = newProduct.filter(item => item.category === category)
+    const [sortValue, setSortValue] = useState("default")
 
-    const { scrollToTop, toVND } = useContext(ShopContext)
+    const productsItem = useMemo(() => {
+        return newProduct.filter((item) => item.category === category)
+    }, [newProduct, category])
 
-    
+    const [filterProCategory, setFilterProCategory] = useState(productsItem)
+    const [originalProducts, setOriginalProducts] = useState([])
+
+    useEffect(() => {
+        setFilterProCategory(productsItem)
+        setOriginalProducts([...productsItem])
+    }, [productsItem])
+
+    useEffect(() => {
+        if (selectedPrices.length === 0 && selectedBrands.length === 0 && selectedFrom.length === 0) {
+            setFilterProCategory(productsItem)
+        } else {
+            if (filtered && filtered.length > 0) {
+                setFilterProCategory(filtered) 
+            } else if (filtered && filtered.length === 0) {
+                setFilterProCategory([])
+            }
+        }
+    }, [selectedPrices, selectedBrands, selectedFrom, productsItem])
+
+    const filtered = productsItem.filter((product) => {
+        const price = product.sale - (product.sale * product.discount) / 100
+
+        const matchesPrice = 
+            selectedPrices.length === 0 ||
+            selectedPrices.some((priceRange) => {
+            switch (priceRange) {
+                case "below1":
+                    return price < 1000000
+                case "12":
+                    return price >= 1000000 && price <= 2000000
+                case "23":
+                    return price > 2000000 && price <= 3000000
+                case "34":
+                    return price > 3000000 && price <= 4000000
+                case "above4":
+                    return price > 4000000
+                default:
+                    return false
+            }
+        })
+
+        const matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(product.brand)
+
+        const matchesFrom = selectedFrom.length === 0 || selectedFrom.includes(product.from)
+
+        return matchesPrice && matchesBrand && matchesFrom
+    })
+
     return(
         <>
             <div className="product-detail">
                 <img src={banner} alt="" className="banner" data-aos="fade-down" />
                 <h2 className="title" data-aos="fade-down">{category} Product</h2>
-                <div className="container-product">
-                    {productsItem.map((product) => {
-                        return (
-                            <div className="box" key={product.id} data-aos="fade-left">
-                                <div className="product">
-                                    <div className="img">
-                                        <div className="discount">
-                                            <span className="percent">{product.discount}%</span>
-                                            <span className="off">OFF</span>
-                                        </div>
-                                        <Link to={`/${category}/${product.id}`} onClick={scrollToTop}>
-                                            <img src={product.cover} alt="" />
-                                        </Link>
-                                        <div className="product-like">
-                                            <label>{product.like}</label> <br />
-                                            <i
-                                                className="fa-regular fa-heart"
-                                                // onClick={() => handleClickToIncLike(product.id, product.category)}
-                                            ></i>
-                                        </div>
-                                    </div>
-
-                                    <div className="product-details">
-                                        <h3>{product.name}</h3>
-                                        <div className="rate">
-                                            <i className="fa fa-star"></i>
-                                            <i className="fa fa-star"></i>
-                                            <i className="fa fa-star"></i>
-                                            <i className="fa fa-star"></i>
-                                            <i className="fa fa-star"></i>
-                                        </div>
-                                        <div className="price">
-                                            <div className="p-price">
-                                                <h4>₫{toVND(product.price)}</h4>
-                                                <h4 className="sale">₫{toVND(product.sale)}</h4>
-                                            </div>
-                                            <button onClick={() => handleAddToCart(product)}>
-                                                <i className="fa fa-plus"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        )
-                    })}
+                <div className="content">
+                    <div className="product-detail-left">
+                        <FilterProCat 
+                            productsItem={productsItem}
+                            setSelectedPrices={setSelectedPrices}
+                            setSelectedBrands={setSelectedBrands}
+                            setSelectedFrom={setSelectedFrom}
+                        />
+                    </div>
+                    <div className="product-detail-right">
+                        <NoProAndSort 
+                            filterProCategory={filterProCategory}
+                            sortValue={sortValue}
+                            selectedPrices={selectedPrices}
+                            filtered={filtered}
+                            originalProducts={originalProducts}
+                            setSortValue={setSortValue}
+                            setFilterProCategory={setFilterProCategory}
+                        />
+                        <div className="container-product">
+                            {filterProCategory.map((product, i) => {
+                                return (
+                                    <Item 
+                                        key={i}
+                                        product={product}
+                                        discount={product.discount}
+                                        category={product.category}
+                                        id={product.id}
+                                        cover={product.cover}
+                                        like={product.like}
+                                        name={product.name}
+                                        from={product.from}
+                                        sale={product.sale}
+                                        handleAddToCart={handleAddToCart}
+                                    />
+                                )
+                            })}
+                        </div>
+    
+                    </div>
                 </div>
             </div>
         </>

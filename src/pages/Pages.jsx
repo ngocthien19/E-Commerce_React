@@ -8,7 +8,7 @@ import Shop from "../components/shop/Shop"
 import Annu from "../components/Annocuments/Annu"
 import Wrapper from "../components/wrapper/Wrapper"
 
-const Pages = ({ productItems, handleAddToCart, shopItems }) => {
+const Pages = ({ productItems, shopItems, setSearchTerm, handleAddToCart }) => {
 
     return (
         <>
@@ -17,10 +17,17 @@ const Pages = ({ productItems, handleAddToCart, shopItems }) => {
                 productItems={productItems}
                 handleAddToCart={handleAddToCart}
             />
-            <TopCate />
-            <NewArrivals />
-            <Discount />
+            <TopCate 
+                setSearchTerm={setSearchTerm}
+            />
+            <NewArrivals 
+                setSearchTerm={setSearchTerm}
+            />
+            <Discount 
+                setSearchTerm={setSearchTerm}
+            />
             <Shop 
+                setSearchTerm={setSearchTerm}
                 shopItems={shopItems}
                 handleAddToCart={handleAddToCart}
             />

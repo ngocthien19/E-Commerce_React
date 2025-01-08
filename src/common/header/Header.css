@@ -137,6 +137,10 @@ header ul {
     line-height: 8vh;
 }
 
+.nav_link {
+    position: relative;
+}
+
 header ul .nav_link_item {
     position: relative;
     margin-left: 30px;
@@ -183,18 +187,19 @@ header ul li:hover {
     header ul {
         padding-top: 40px;
     }
+
     .nav-link-mobileMenu {
         position: absolute;
         display: block;
         list-style-type: none;
         left: 0;
         top: 0; 
-        transition: all 0.5s linear;
-        width: 60%;
+        width: 300px;
         height: 100vh;
         background-color: #fff;
         z-index: 888;
         box-shadow: rgba(50, 50, 93, 0.23) 0 50px 100px -20px, rgba(0, 0, 0, 0.3) 0 30px 60px -30px;
+        transition: all 0.5s linear;
     }
 
     header ul li {
@@ -221,13 +226,13 @@ header ul li:hover {
 
     .open {
         position: absolute;
-        top: 180px;
-        right: 60px;
+        top: 10px;
+        right: 0;
     }
 
     .close {
         position: absolute;
         top: 15px;
-        left: 55%;
+        left: 0;
     }
 }

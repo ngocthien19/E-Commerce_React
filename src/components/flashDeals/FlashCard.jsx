@@ -2,8 +2,7 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import React, { useContext, useState } from "react"
 import Slider from "react-slick"
-import { Link } from "react-router-dom"
-import { ShopContext } from "../../common/context/ShopContext"
+import Item from "../item/Item"
 
 const FlashCard = ({ productItems, handleAddToCart }) => {
 
@@ -52,53 +51,24 @@ const FlashCard = ({ productItems, handleAddToCart }) => {
         prevArrow: <PrevArrow />,
     };
 
-    const { scrollToTop, toVND } = useContext(ShopContext)
-
     return (
         <>
             <Slider {...settings}>
-                {products.map((product) => {
+                {products.map((product, i) => {
                     return (
-                        <div className="box" key={product.id} data-aos="flip-left">
-                            <div className="product">
-                                <div className="img">
-                                    <div className="discount">
-                                        <span className="percent">{product.discount}%</span>
-                                        <span className="off">OFF</span>
-                                    </div>
-                                    <Link to={`/${product.category}/${product.id}`} onClick={scrollToTop}>
-                                        <img src={product.cover} alt="" />
-                                    </Link>
-                                    <div className="product-like">
-                                        <label>{product.like}</label> <br />
-                                        <i
-                                            className="fa-regular fa-heart"
-                                            onClick={() => increment(product.id)}
-                                        ></i>
-                                    </div>
-                                </div>
-
-                                <div className="product-details">
-                                    <h3>{product.name}</h3>
-                                    <div className="rate">
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i>
-                                    </div>
-                                    <div className="price">
-                                        <div className="p-price">
-                                            <h4>₫{toVND(product.sale - product.sale * product.discount / 100)}</h4>
-                                            <h4 className="sale">₫{toVND(product.sale)}</h4>
-                                        </div>
-                                        <button onClick={() => handleAddToCart(product)}>
-                                            <i className="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <Item 
+                            key={i}
+                            product={product}
+                            discount={product.discount}
+                            category={product.category}
+                            id={product.id}
+                            cover={product.cover}
+                            like={product.like}
+                            from={product.from}
+                            name={product.name}
+                            sale={product.sale}
+                            handleAddToCart={handleAddToCart}
+                        />
                     )
                 })}
             </Slider>

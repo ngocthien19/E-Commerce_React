@@ -82,6 +82,11 @@
     margin-bottom: 25px;
 }
 
+.order-pay .o-right .amount span {
+    color: #0f3460;
+    font-size: 20px;
+}
+
 .order-pay .o-right .btn-action {
     display: flex;
     justify-content: center;

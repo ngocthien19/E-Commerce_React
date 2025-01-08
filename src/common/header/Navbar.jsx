@@ -24,31 +24,25 @@ const Navbar = ({ activeMenu, setActiveMenu }) => {
                         <ul className={mobileMenu ? "nav-link-mobileMenu" : "link f_flex"} onClick={() => setMobileMenu(false)}>
                             <Link to="/">
                                 <li onClick={() => setActiveMenu("home")} className="nav_link_item">
-                                    Home {activeMenu === "home" ? <hr /> : <></>}
-                                </li>
-                            </Link>
-                            <Link to="/menu">
-                                <li onClick={() => setActiveMenu("menu")} className="nav_link_item">
-                                    All Product {activeMenu === "menu" ? <hr /> : <></>}
+                                    Home  {activeMenu === "home" ? <hr data-aos="fade-right"/> : <></>}  
                                 </li>
                             </Link>
                             <Link to="/user">
                                 <li onClick={() => setActiveMenu("user")} className="nav_link_item">
-                                    User account {activeMenu === "user" ? <hr /> : <></>}
+                                    User account {activeMenu === "user" ? <hr data-aos="fade-right"/> : <></>}
                                 </li>
                             </Link>
                             <Link to="/track-order">
                                 <li onClick={() => setActiveMenu("track-order")} className="nav_link_item">
-                                    Track my order {activeMenu === "track-order" ? <hr /> : <></>}
+                                    Track my order {activeMenu === "track-order" ? <hr data-aos="fade-right"/> : <></>}
                                 </li>
                             </Link>
                             <Link to="/contact">
                                 <li onClick={() => setActiveMenu("contact")} className="nav_link_item">
-                                    Contact {activeMenu === "contact" ? <hr /> : <></>}
+                                    Contact {activeMenu === "contact" ? <hr data-aos="fade-right"/> : <></>}
                                 </li>
                             </Link>
                         </ul>
-
                         <button className="toggle" onClick={() => setMobileMenu(!mobileMenu)}>
                             {mobileMenu ? <i className="fa fa-times close home-bth"></i> :
                                 <i className="fas fa-bars open"></i>

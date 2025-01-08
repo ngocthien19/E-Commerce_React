@@ -4,7 +4,9 @@ import Head from "./Head"
 import Search from "./Search"
 import Navbar from "./Navbar"
 
-const Header = ({ cartItem, activeMenu, modalSearch, searchTerm, setSearchTerm, setActiveMenu, setFilteredProducts, setModalSearch }) => {
+const Header = ({ cartItem, activeMenu, modalSearch, searchTerm, 
+    setSearchTerm, setActiveMenu, setFilteredProducts, setModalSearch 
+}) => {
     
     return(
         <>
@@ -12,9 +14,9 @@ const Header = ({ cartItem, activeMenu, modalSearch, searchTerm, setSearchTerm, 
             <Search 
                 cartItem={cartItem}
                 searchTerm={searchTerm}
+                modalSearch={modalSearch}
                 setSearchTerm={setSearchTerm}
                 setActiveMenu={setActiveMenu}
-                modalSearch={modalSearch}
                 setModalSearch={setModalSearch}
                 setFilteredProducts={setFilteredProducts}
             />

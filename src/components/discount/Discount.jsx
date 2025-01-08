@@ -4,11 +4,12 @@ import './Style.css'
 import { useNavigate } from "react-router-dom"
 import { ShopContext } from "../../common/context/ShopContext"
 
-const Discount = () => {
+const Discount = ({ setSearchTerm }) => {
     const { scrollToTop } = useContext(ShopContext)
     const navigate = useNavigate()
     const handleGoAllProduct = () => {
-        navigate('/menu')
+        setSearchTerm("")
+        navigate('/item-search')
         scrollToTop()
     }
     return(

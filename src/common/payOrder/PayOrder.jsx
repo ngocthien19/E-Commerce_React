@@ -2,25 +2,27 @@ import React, { useContext, useState } from "react"
 import Order from '../../assets/images/order.png'
 import { ShopContext } from "../context/ShopContext"
 import { useNavigate  } from 'react-router-dom'
+import ModalRemoveItem from "../cart/ModalRemoveItem"
 import './PayOrder.css'
 
-const PayOrder = ({ cartItem, itemPay, setActiveMenu, setCartItem, setItemPay, handleDeleteCart }) => {
+const PayOrder = ({ cartItem, itemPay, productToRemove, modalRemove, setProductToRemove, setModalRemove,
+    setActiveMenu, setCartItem, setItemPay, handleDeleteCart
+}) => {
     const navigate  = useNavigate()
     const { scrollToTop, toVND } = useContext(ShopContext)
     const [selectedValue, setSelectedValue] = useState('')
 
-    const getTotalPrice = cartItem.reduce((total, item) => total + item.price * item.qty, 0)
+    const getTotalPrice = cartItem.reduce((total, item) => total + (item.sale - item.sale * item.discount / 100) * item.qty, 0)
     const percentList = [10, 25, 30]
 
     const handleChange = (event) => {
-        setSelectedValue(event.target.value);
-    };
+        setSelectedValue(event.target.value)
+    }
     
     const totalAmount = getTotalPrice - (getTotalPrice * (selectedValue / 100))
 
     const handleGoAllProduct = () => {
-        setActiveMenu("menu")
-        navigate('/menu')
+        navigate('/item-search')
         scrollToTop()
     }
 
@@ -31,6 +33,11 @@ const PayOrder = ({ cartItem, itemPay, setActiveMenu, setCartItem, setItemPay, h
         setActiveMenu("track-order")
         navigate('/track-order')
         scrollToTop()
+    }
+
+    const handleShowModalAndDelete = (item) => {
+        setModalRemove(true)
+        setProductToRemove(item)
     }
     
     return (
@@ -53,15 +60,15 @@ const PayOrder = ({ cartItem, itemPay, setActiveMenu, setCartItem, setItemPay, h
                                 </thead>
                                 <tbody>
                                     {cartItem.map((item, i) => {
-                                        const productQty = item.price * item.qty
+                                        const productQty = (item.sale - item.sale * item.discount / 100) * item.qty
                                         return (
                                             <tr className="tr">
                                                 <td className="td">{item.name}</td>
                                                 <td className="td">{item.qty}</td>
-                                                <td className="td">{toVND(item.price)}</td>
+                                                <td className="td">{toVND(item.sale - item.sale * item.discount / 100)}</td>
                                                 <td className="td">{toVND(productQty)}</td>
                                                 <td className="td">
-                                                    <i className='fa fa-xmark' onClick={() => handleDeleteCart(item)}></i>
+                                                    <i className='fa fa-xmark' onClick={() => handleShowModalAndDelete(item)}></i>
                                                 </td>
                                             </tr>
                                         )
@@ -82,7 +89,7 @@ const PayOrder = ({ cartItem, itemPay, setActiveMenu, setCartItem, setItemPay, h
                             <option value={percentList[2]}>30%</option>
                         </select>
                         <hr />
-                        <p className="amount">Total Amount: ₫{toVND(totalAmount)}</p>
+                        <p className="amount">Total Amount: <span>₫{toVND(totalAmount)}</span></p>
                         <p className="method">Choose payment method:</p>
                         <select id="options" name="options" required>
                             <option value="" disabled selected hidden>--Choose--</option>
@@ -96,6 +103,12 @@ const PayOrder = ({ cartItem, itemPay, setActiveMenu, setCartItem, setItemPay, h
                     </div>
                 </div>
             </div>
+            <ModalRemoveItem 
+                modalRemove={modalRemove}
+                productToRemove={productToRemove}
+                setModalRemove={setModalRemove}
+                handleDeleteCart={handleDeleteCart}
+            />
         </>
     )
 }

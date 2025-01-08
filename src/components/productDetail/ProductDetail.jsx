@@ -12,6 +12,16 @@ const ProductDetail = ({ category, handleAddToCart }) => {
     const { newProduct, toVND } = useContext(ShopContext)
     
     const ItemProduct = newProduct.find(item => item.id === (+id))
+
+    const formatNumber = (number) => {
+        if (number >= 1000000) {
+            return `${(number / 1000000).toFixed(1)}M`
+        }
+        if (number >= 1000) {
+            return `${(number / 1000).toFixed(1)}K`
+        }
+        return number.toString()
+    }
     
     return(
         <>
@@ -40,6 +50,7 @@ const ProductDetail = ({ category, handleAddToCart }) => {
                                 <i className="fa fa-star"></i>
                                 <i className="fa fa-star"></i>
                                 <span className="sold">({ItemProduct.sold})</span>
+                                <span className='like'>Liked: {formatNumber(ItemProduct.like)}</span>
                             </div>
                             <div className="price">
                                 <span className="under">₫{toVND(ItemProduct.sale - ItemProduct.sale * ItemProduct.discount / 100)}</span>
@@ -47,8 +58,10 @@ const ProductDetail = ({ category, handleAddToCart }) => {
                                 <span className="off-price">(-{ItemProduct.discount}%)</span>
                             </div>
                             <p className="desc">{ItemProduct.desc}</p>
-                            <button onClick={() => handleAddToCart(ItemProduct)} className="btn_action">Add to Cart</button>
+                            <p className='brand'>Brand: <span>{ItemProduct.brand}</span></p>
+                            <p className='from'>From: <span>{ItemProduct.from}</span></p>
                             <h4 className="sub-desc">Category: <span>{category}</span></h4>
+                            <button onClick={() => handleAddToCart(ItemProduct)} className="btn_action">Add to Cart</button>
                         </div>
                     </div>
                     <Describe 

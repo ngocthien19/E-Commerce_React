@@ -1,11 +1,12 @@
-import React, { useContext } from "react"
-import './Cart.css'
+import React, { useContext, useState } from "react"
 import { Link } from "react-router-dom"
 import { ShopContext } from "../context/ShopContext"
+import ModalRemoveItem from "./ModalRemoveItem"
+import './Cart.css'
 
-const Cart = ({ cartItem, handleAddToCart, handleDeleteCart, handleDeleteQty }) => {
-    const totalPrice = cartItem.reduce((price, item) => price + item.price * item.qty, 0)
+const Cart = ({ cartItem, modalRemove, productToRemove, setProductToRemove, setModalRemove, handleAddToCart, handleDeleteCart, handleDeleteQty }) => {
     const { scrollToTop, toVND } = useContext(ShopContext)
+    const totalPrice = cartItem.reduce((price, item) => price + (item.sale - item.sale * item.discount / 100) * item.qty, 0)
     return (
         <>
             <section className="cart-items">
@@ -15,7 +16,7 @@ const Cart = ({ cartItem, handleAddToCart, handleDeleteCart, handleDeleteQty }) 
                             <h1 className="no-items cart-list" data-aos="zoom-in-right">No Items are added in Cart</h1>
                         }
                         {cartItem.map(item => {
-                            const productQty = item.price * item.qty
+                            const productQty = (item.sale - item.sale * item.discount / 100) * item.qty
                             return (
                                 <div className="cart-list f_flex">
                                     <div className="img">
@@ -24,18 +25,24 @@ const Cart = ({ cartItem, handleAddToCart, handleDeleteCart, handleDeleteQty }) 
                                     <div className="cart-info">
                                         <h3>{item.name}</h3>
                                         <div className="cart-price">
-                                            <h4 className="price1">Price: {toVND(item.price)}</h4>
+                                            <h4 className="price1">Price: {toVND(item.sale - item.sale * item.discount / 100)}</h4>
                                             <h4 className="total1">Total: {toVND(productQty)}</h4>
                                         </div>
                                     </div>
                                     <div className="cart-action">
                                         <div>
-                                            <button className="remove-cart" onClick={() => handleDeleteCart(item)}>
+                                            <button className="remove-cart" onClick={() => {
+                                                setProductToRemove(item)
+                                                setModalRemove(true)
+                                            }}>
                                                 <i className="fa-solid fa-xmark"></i>
                                             </button>
                                         </div>
                                         <div className="cartControl d_flex">
-                                            <button className="inCart" onClick={() => handleDeleteQty(item)}>
+                                            <button className="inCart" onClick={() => {
+                                                setProductToRemove(item)
+                                                handleDeleteQty(item)
+                                            }}>
                                                 <i className="fa fa-minus"></i>
                                             </button>
                                             <span className="qty">{item.qty}</span>
@@ -49,8 +56,9 @@ const Cart = ({ cartItem, handleAddToCart, handleDeleteCart, handleDeleteQty }) 
                             )
                         })}
                     </div>
+                    
                     {cartItem.length > 0 && 
-                        <div className="cart-total" data-aos="zoom-in-left">
+                        <div className="cart-total">
                             <h2>Cart Summary</h2>
                             <div className="cart-total-content d_flex">
                                 <h4>Product Quantity</h4>
@@ -73,6 +81,12 @@ const Cart = ({ cartItem, handleAddToCart, handleDeleteCart, handleDeleteQty }) 
                     }
                 </div>
             </section>
+            <ModalRemoveItem 
+                modalRemove={modalRemove}
+                productToRemove={productToRemove}
+                setModalRemove={setModalRemove}
+                handleDeleteCart={handleDeleteCart}
+            />
         </>
     )
 }
